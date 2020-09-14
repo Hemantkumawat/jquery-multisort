@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>jQuery UI Draggable + Sortable</title>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+    <script src="bootstrap/js/jquery-slim.js"></script>
+    <script src="bootstrap/js/popper.js"></script>
+    <script src="bootstrap/js/bootstrap.js"></script>
+
+    <link rel="stylesheet" href="plugins/jquery-ui/jquery-ui.css">
+    <style>
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            margin-bottom: 10px;
+        }
+
+        li {
+            margin: 5px;
+            padding: 5px;
+            width: 150px;
+        }
+        .z-index-1{
+            z-index: 1;
+        }
+        .bg-light-10{
+            background-color: #c3c6ca!important;
+        }
+    </style>
+
+</head>
+<body>
+<div class="container">
+    <div class="row bg-light-10 my-5 pt-2">
+        <div class="col-md-12">
+            <ul>
+                <li class="draggable btn btn-dark m-1 z-index-1">Drag me down</li>
+                <li class="draggable btn btn-dark m-1 z-index-1">Drag me down</li>
+                <li class="draggable btn btn-dark m-1 z-index-1">Drag me down</li>
+                <li class="draggable btn btn-dark m-1 z-index-1">Drag me down</li>
+                <li class="draggable btn btn-dark m-1 z-index-1">Drag me down</li>
+            </ul>
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3 bg-light-10 pt-2 mx-1">
+            <ul class="sortable">
+                <li class="btn btn-primary m-1 w-100">Item 1</li>
+                <li class="btn btn-primary m-1 w-100">Item 2</li>
+                <li class="btn btn-primary m-1 w-100">Item 3</li>
+                <li class="btn btn-primary m-1 w-100">Item 4</li>
+                <li class="btn btn-primary m-1 w-100">Item 5</li>
+            </ul>
+        </div>
+        <div class="col-md-3 bg-light-10 pt-2 mx-1">
+            <ul class="sortable">
+                <li class="btn btn-primary m-1 w-100">Item 1</li>
+                <li class="btn btn-primary m-1 w-100">Item 2</li>
+                <li class="btn btn-primary m-1 w-100">Item 3</li>
+                <li class="btn btn-primary m-1 w-100">Item 4</li>
+                <li class="btn btn-primary m-1 w-100">Item 5</li>
+            </ul>
+        </div>
+        <div class="col-md-3 bg-light-10 pt-2 mx-1">
+            <ul class="sortable">
+                <li class="btn btn-primary m-1 w-100">Item 1</li>
+                <li class="btn btn-primary m-1 w-100">Item 2</li>
+                <li class="btn btn-primary m-1 w-100">Item 3</li>
+                <li class="btn btn-primary m-1 w-100">Item 4</li>
+                <li class="btn btn-primary m-1 w-100">Item 5</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script src="plugins/jquery-ui/jquery-ss-ui.js"></script>
+<script src="plugins/jquery-ui/jquery-ui-ui.js"></script>
+<script>
+    $(document).ready(function () {
+        $(".draggable").draggable({
+            connectToSortable: ".sortable",
+            helper: "clone",
+            revert: "invalid",
+        });
+
+        $(".sortable").sortable({
+            revert: true,
+            stop: function( event, ui ) {
+
+            }
+        });
+
+        $("ul, li").disableSelection();
+    });
+</script>
+</body>
+</html>
